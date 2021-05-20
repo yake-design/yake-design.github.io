@@ -1,2 +1,2 @@
-# suli-group.github.io
-suli.group
+# yake-design.github.io
+www.yake.design
