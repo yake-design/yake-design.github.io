@@ -1,0 +1,29 @@
+//out:../css/
+
+.htmlFontSize(@screen; @fwRate; @index) when (@index <= length(@screens)) {
+  @minWidth: extract(@screens, @index);
+  @fontSize: round(@fwRate * @minWidth, 4);
+  @media only screen and (min-width: @minWidth) {
+    html {
+      font-size: @fontSize !important;
+    }
+  }
+  .htmlFontSize(@screens; @fwRate; @index + 1);
+}
+
+.htmlFontSize(@screens; @fwRate) {
+  .htmlFontSize(@screens; @fwRate; 0);
+}
+
+.htmlFontSize(@screens) {
+  .htmlFontSize(@screens; 14px / 750px; 0);
+}
+
+.htmlFontSize() {
+  // @screens: 320px, 360px,375px, 414px, 480px, 540px, 600px, 640px, 720px, 750px, 768px, 800px, 1080px;
+  @screens: 320px, 360px, 375px, 414px, 480px, 540px, 600px, 640px, 720px, 750px;
+  // @screens: 320px, 360px,375px, 414px, 480px, 540px, 600px, 640px;
+  .htmlFontSize(@screens; 100px / 750px; 1);
+}
+
+.htmlFontSize();
